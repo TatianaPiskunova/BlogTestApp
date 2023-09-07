@@ -1,0 +1,39 @@
+﻿@model List<UserViewModel>
+
+    <style>
+
+    body {
+        background-color: #E4E4D8;
+    }
+        th, td {
+            text-align: center !important;
+        }
+    </style>
+
+
+<div class="container">
+    <div class="row">
+        <table class="table table-sm table-striped">
+            <caption>Список пользователей</caption>
+            <thead>
+                <tr>
+                    <th>Логин</th>
+                    <th>Email</th>
+                    <th>Номер телефона</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model)
+                {
+                    <tr>
+                        <td>@user.UserName</td>
+                        <td>@user.Email</td>
+                        <td>@user.PhoneNumber</td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>

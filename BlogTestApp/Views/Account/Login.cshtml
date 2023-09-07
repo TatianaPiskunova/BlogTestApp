@@ -1,0 +1,55 @@
+﻿@model LoginViewModel
+
+@{
+    ViewData["Title"] = "Вход";
+}
+
+    
+<style>
+    body {
+        background-color: #E4E4D8;
+    }
+    .enter{
+        background-color: #E4AF9D;
+        color: white;
+    }
+ </style>
+
+
+
+<div class="text-center pt-5">
+    <h4>Вход</h4>
+    <hr />
+    <div class="container">
+        <form asp-controller="Account" asp-action="Login" class="p-3">
+            <div class="row m-2 mt-3">
+                <div class="col-3">
+                    <label asp-for="UserName" class="col-form-label">Логин</label>
+                </div>
+                <div class="col-9  d-grid">
+                    <input asp-for="UserName" value="@Model.UserName" class="form-control">
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row m-2">
+                <div class="col-3">
+                    <label asp-for="Password" class="col-form-label">Пароль</label>
+                </div>
+                <div class="col-9 d-grid">
+                    <input asp-for="Password" value="@Model.Password" class="form-control">
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+            </div>
+          
+            <div class="validation" asp-validation-summary="ModelOnly"></div>
+            <div class="row m-2 mt-3">
+                <div class="col d-grid">
+                    <input type="submit" class="btn enter" value="Войти" />
+                </div>
+            </div>
+         
+        </form>
+        <a asp-controller="Account" asp-action="Register" >Зарегистрироваться</a>
+
+    </div>
+</div>

@@ -1,0 +1,29 @@
+﻿@model EditCommentViewModel
+
+<style>
+    body {
+        background-color: #E4E4D8;
+    }
+
+    .reg {
+        background-color: #E4AF9D;
+        color: white;
+        margin-top: 20px;
+    }
+</style>
+
+
+<form asp-controller="Post" asp-action="EditComment" method="post">
+    <div class="validation" asp-validation-summary="ModelOnly"></div>
+    <input asp-for="Id" hidden readonly />
+    <div class="form-group">
+        <label asp-for="TextComment"></label>
+        <span asp-validation-for="TextComment" class="text-danger"></span>
+        <input asp-for="TextComment" value="@Model.TextComment" class="form-control" />
+    </div>
+    <div class="form-group  d-grid">
+        <input type="submit" value="Изменить" class="btn reg" />
+    </div>
+</form>
+
+<a asp-controller="Post" asp-action="index" class="btn reg d-grid" asp-route-id="@Model.Id">Назад</a>

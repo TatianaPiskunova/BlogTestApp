@@ -1,0 +1,105 @@
+﻿@model PostAndCommentsViewModel
+
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+   
+<style>
+    body {
+        background-color: #E4E4D8;
+    }
+       
+    .reg {
+        background-color: #E4AF9D;
+        color: white;
+    }
+
+    .textUserName, .textDataTime {
+        font-size:small;
+        color: grey;
+    }
+
+    .textUserName {
+    
+        font-style: italic;
+      
+    }
+</style>
+
+
+<h4>@Model.TitlePost</h4>
+<div class="row text-end">
+    @if (User.Identity.Name == @Model.UserName)
+    {
+        <a asp-controller="Post" asp-action="EditTitlePost" asp-route-id="@Model.Id" class="text-secondary" style="font-size:10px">Изменить название поста</a>
+    }
+</div>
+<hr />
+
+
+<p>Автор: <span style="font-size:large; font-weight:500">@Model.UserName</span></p>
+       
+   
+
+         @if (Model.Image is not null)
+         {
+              <div class="col text-center">
+                   <img src="~/images/@Model.Image" width="400px" height="400px" alt="image" class="img-fluid" />
+              </div>
+         }
+                
+         <div class="col">@Model.TextPost</div>
+
+         @if (User.Identity.Name == @Model.UserName)
+         {
+            <div class="col text-end">
+        <a asp-controller="Post" asp-action="EditPost" asp-route-id="@Model.Id" class="text-secondary" style="font-size:10px">Изменить пост</a>
+              </div>
+         }
+ 
+      
+<hr />
+<div class="col">
+    <div class="row">
+            <div class="col" style="font-size:16px">Комментарии</div>
+            <div class="col text-end text-secondary">
+                @if (User.Identity.IsAuthenticated)
+                {
+                <a asp-controller="Post" asp-action="AddComment" asp-route-id="@Model.Id" class="text-secondary">Добавить комментарий</a>
+
+                }
+            </div>
+    </div>
+
+     <div class="col">
+        <div class="overflow-auto" style="height:250px; font-size:smaller"  >
+            @foreach(Comment comment in Model.Comments)
+            {
+                <hr/>
+             
+
+                    <div class="col ">
+                    <div class="textUserName">@comment.UserName</div>
+                    <div class="textDataTime text-end">@comment.DateTime</div>
+                    </div>
+                    <p>@comment.TextComment</p>
+
+                    
+             
+
+            
+          
+            }
+        </div>
+     </div>
+ </div>
+
+
+<div class="col mt-5">
+            <a asp-controller="Home" asp-action="Index" class="btn reg d-grid">Назад</a>
+        </div>
+
+

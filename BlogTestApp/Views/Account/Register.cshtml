@@ -1,0 +1,57 @@
+﻿@model RegisterViewModel
+
+
+<style>
+    body {
+        background-color: #E4E4D8;
+    }
+    .reg{
+        background-color: #E4AF9D;
+        color: white;
+        margin-top: 20px;
+    }
+</style>
+
+
+
+<h4>Регистрация</h4>
+<hr />
+
+<div class="row">
+    <div class="col">
+        <form method="post" asp-controller="Account" asp-action="Register">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="control-label"></label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+                <span style="font-size:10px">Пароль должен включать: менее 7 символов, буквы латинские в разных реестрах, цифры и символы </span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PasswordConfirm" class="control-label"></label>
+                <input asp-for="PasswordConfirm" class="form-control" />
+                <span asp-validation-for="PasswordConfirm" class="text-danger"></span>
+            </div>
+            <div class="form-group  d-grid">
+                <input type="submit" value="Зарегистрироваться" class="btn reg"  />
+            </div>
+        </form>
+        <br />
+        <a asp-controller="Account" asp-action="Clear" class="btn reg d-grid">Отмена</a>
+    </div>
+</div>
